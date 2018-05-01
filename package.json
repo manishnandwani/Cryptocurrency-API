@@ -1,0 +1,19 @@
+{
+  "name": "hortari",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.10",
+    "angular-route": "^1.6.10",
+    "bootstrap": "^4.1.0",
+    "crypto-currency-icon": "^0.1.8",
+    "cryptocurrencies": "^3.0.1",
+    "cryptofont": "^0.1.1"
+  }
+}

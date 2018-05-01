@@ -1,0 +1,136 @@
+<html ng-app="crypto">
+    <head>
+        <meta http-equiv="Refresh" content="300"> 
+        <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-route/angular-route.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link rel="stylesheet" href="node_modules/cryptofont/css/cryptofont.css">
+    <!-- <link rel="stylesheet" href="node_modules/dist/crypto-currency-icon.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="node_modules/crypto-currency-icon/dist/crypto-currency-icon.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<style>
+           
+           .pad{
+        margin-left:100px;
+        margin-right:100px;
+    
+    }
+    
+    .back{
+        background-color:rgb(245, 241, 236);
+    }
+   
+tr:nth-child(odd) {
+    background-color: #b8abab;
+}
+
+.navbar-custom{
+    
+    background-color: #995a41;
+}
+.drop
+{
+   margin-top: 5px;
+   background-color: #995a41;
+}
+</style>
+    </head>
+    <body class="back">
+        <div class="center container" ng-controller="firstCtrl as first">
+            <nav class=" navbar navbar-default navbar-custom navbar-dark ">
+                <div class="container-fluid">
+                  <!-- <div class="navbar-header">
+                    <a class="navbar-brand" href="#">WebSiteName</a>
+                  </div> -->
+                  <ul class="pad nav navbar-nav">
+                    <li >
+                        <div class="dropdown">
+                            <button class="btn drop dropdown-toggle" id="menu1" type="button" ng-model="first.mar" data-toggle="dropdown">Market Cap
+                            <span class="caret"></span></button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li role="presentation" >
+                                    <a role="menuitem" tabindex="-1" href="#!"ng-click="first.search=0">All</a>
+                                </li>
+                                <li role="presentation" >
+                                    <a role="menuitem" tabindex="-1" href="#!" ng-click="first.search=first.fun(a)">$1 Billion</a>
+                                </li>
+                                <li role="presentation" >
+                                    <a role="menuitem" tabindex="-1" href="#!"ng-click="first.search=first.fun(b)">$100 Million - $1 Billion</a>
+                                </li>
+                                <li role="presentation" >
+                                    <a role="menuitem" tabindex="-1" href="#!"ng-click="first.search=first.fun(c)">$10 Million - $100 Million</a>
+                                </li>
+                                <li role="presentation" >
+                                    <a role="menuitem" tabindex="-1" href="#!"ng-click="first.search=first.fun(d)">$1 Million - $10 Million</a>
+                                </li>       
+                            </ul>
+                        </div> 
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="btn drop dropdown-toggle" id="menu2" type="button" data-toggle="dropdown">Price
+                            <span class="caret"></span></button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li role="presentation" ng-repeat="p in first.price"><a role="menuitem" tabindex="-1" href="#!">{{p}}</a></li>                                   
+                            </ul>
+                        </div> 
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="btn drop dropdown-toggle" id="menu3" type="button" data-toggle="dropdown">Volume(24h)
+                            <span class="caret"></span></button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li role="presentation" ng-repeat="v in first.volume"><a role="menuitem" tabindex="-1" href="#!">{{v}}</a></li>                                   
+                            </ul>
+                        </div>
+                     </li>
+                   
+                  </ul>
+                </div>
+              </nav>
+
+
+
+        
+            <table class="table table-bordered ">
+                <thead>
+                  <tr>
+                    <th>Name </th>
+                    <th>Symbol</th>
+                    <th>Market Cap</th>
+                    <th>Price </th>
+                    <th>Circulatin Supply</th>
+                    <th>Volume</th>
+                    <th>%1h</th>
+                    <th>%24h</th>
+                    <th>7d</th>
+                </tr>
+                </thead>
+                <tbody  ng-repeat="m in first.crypto | filter:first.search|orderBy:first.market_cap_usd">
+                  <tr>
+                    <td> <p class="icon cryptoCoin {{m.symbol}} small"></p> {{m.name}}</td>
+                    <td>{{m.symbol}}</td>
+                    <td>{{m.market_cap_usd|currency}}</td>
+                    <td >{{m.price_usd|currency}}</td>
+                    <td>{{m.total_supply}}</td>
+                    <td>{{m["24h_volume_usd"]|currency}}</td>
+                    <td>{{m.percent_change_1h}}%</td>
+                    <td>{{m.percent_change_24h}}%</td>
+                    <td>{{m.percent_change_7d}}%</td>
+                    
+                  </tr>
+                  
+                </tbody>
+              </table>
+          </div>
+        </div>
+    </body>
+</html>
